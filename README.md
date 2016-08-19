@@ -23,5 +23,6 @@ nodejs getting started
 ```
   git clone https://github.com/aelbore/nodejs-getting-started.git
   cd nodejs-getting-started
+  npm install
   git checkout develop
 ```

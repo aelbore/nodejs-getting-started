@@ -14,3 +14,7 @@ nodejs getting started
 ```
   brew install git
 ```
+* Verify the nodejs & npm 
+```
+  node -v && npm --version && git --version
+```

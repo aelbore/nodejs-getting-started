@@ -14,7 +14,14 @@ nodejs getting started
 ```
   brew install git
 ```
-* Verify the nodejs & npm 
+* Verify the nodejs, npm & git
 ```
   node -v && npm --version && git --version
+```
+
+## Clone repository
+```
+  git clone https://github.com/aelbore/nodejs-getting-started.git
+  cd nodejs-getting-started
+  git checkout develop
 ```

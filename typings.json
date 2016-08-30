@@ -1,0 +1,10 @@
+{
+  "name": "nodejs-getting-started",
+  "dependencies": {
+    "gulp": "registry:npm/gulp#4.0.0-alpha.2+20160817105618"
+  },
+  "globalDependencies": {
+    "browser-sync": "registry:dt/browser-sync#0.0.0+20160524142403",
+    "gulp-nodemon": "registry:dt/gulp-nodemon#0.0.0+20160316155526"
+  }
+}

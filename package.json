@@ -18,5 +18,10 @@
   "homepage": "https://github.com/aelbore/nodejs-getting-started#readme",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.1.0"
   }
 }

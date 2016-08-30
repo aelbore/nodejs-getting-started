@@ -1,10 +1,15 @@
 var express = require('express');
 var app = express();
+var http = require('http');
+var server = http.createServer(app);
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+app.use(express.static('public'));
+
+app.get('/', function(req, res) {
+  res.sendfile('public/index.html');
 });
 
-app.listen(3002, function () {
-  console.log('Example app listening on port 3002!');
+server.listen(3000, 'localhost');
+server.on('listening', function() {
+  console.log('Express server started on port %s at %s', server.address().port, server.address().address);
 });

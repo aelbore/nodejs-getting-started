@@ -5,7 +5,6 @@ var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 
 var BROWSER_SYNC_RELOAD_DELAY = 500;
-var HOST_PORT = 'http://localhost:3000';
 
 gulp.task('nodemon', function (cb) {
   var called = false;
@@ -28,9 +27,11 @@ gulp.task('nodemon', function (cb) {
 
 gulp.task('browser-sync', ['nodemon'], function () {
   browserSync({
-    proxy: HOST_PORT,
-    port: 4000,
-    browser: ['google-chrome']
+    startPath: '/',
+    server: {
+      baseDir: 'public'
+    },
+    browser: 'default'
   });
 });
 

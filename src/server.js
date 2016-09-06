@@ -15,5 +15,5 @@ app.get('/', (req, res) => {
 server.listen(3000, 'localhost');
 server.on('listening', () => {
   const {address, port} = server.address();
-  console.log(`Express server started on port ${port} at ${address}`);
+  console.log(`Express server started on port ${port} at ${address}.`);
 });

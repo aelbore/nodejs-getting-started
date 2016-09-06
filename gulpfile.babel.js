@@ -1,10 +1,10 @@
 /// <reference path="./typings/index.d.ts" />
 
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var nodemon = require('gulp-nodemon');
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import nodemon from 'nodemon';
 
-var BROWSER_SYNC_RELOAD_DELAY = 500;
+const BROWSER_SYNC_RELOAD_DELAY = 500;
 
 gulp.task('nodemon', function (cb) {
   var called = false;
@@ -34,7 +34,6 @@ gulp.task('browser-sync', ['nodemon'], function () {
     browser: 'default'
   });
 });
-
 
 gulp.task('bs-reload', function () {
   browserSync.reload();

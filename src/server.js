@@ -1,15 +1,19 @@
-var express = require('express');
-var app = express();
-var http = require('http');
-var server = http.createServer(app);
+/// <reference path="../typings/index.d.ts" />
+
+import express from 'express';
+import * as http from 'http';
+
+let app = express();
+let server = http.createServer(app);
 
 app.use(express.static('public'));
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.sendfile('public/index.html');
 });
 
 server.listen(3000, 'localhost');
-server.on('listening', function() {
-  console.log('Express server started on port %s at %s', server.address().port, server.address().address);
+server.on('listening', () => {
+  const {address, port} = server.address();
+  console.log(`Express server started on port ${port} at ${address}.`);
 });

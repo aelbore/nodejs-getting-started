@@ -1,44 +1,13 @@
 /// <reference path="./typings/index.d.ts" />
 
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import nodemon from 'nodemon';
+import * as path from 'path';
+import * as glob from 'glob';
 
-const BROWSER_SYNC_RELOAD_DELAY = 500;
-
-gulp.task('nodemon', function (cb) {
-  var called = false;
-  return nodemon({
-    script: 'index.js',
-    watch: ['src/**/*.js', 'public/**/*.html']
-  })
-  .on('start', function onStart() {
-    if (!called) { cb(); }
-    called = true;
-  })
-  .on('restart', function onRestart() {
-    setTimeout(function reload() {
-      browserSync.reload({
-        stream: false
-      });
-    }, BROWSER_SYNC_RELOAD_DELAY);
-   });
+let tasks = glob.sync('./gulp/**/*.js', {
+  dot: true, 
+  ignore: [ 
+    path.join(__dirname, './gulp/utils.js'), 
+    path.join(__dirname, './gulp/config.js') 
+  ] 
 });
-
-gulp.task('browser-sync', ['nodemon'], function () {
-  browserSync({
-    startPath: '/',
-    server: {
-      baseDir: 'public'
-    },
-    browser: 'default'
-  });
-});
-
-gulp.task('bs-reload', function () {
-  browserSync.reload();
-});
-
-gulp.task('default', ['browser-sync'], function () {
-  gulp.watch('public/**/*.html', ['bs-reload']);
-});
+tasks.forEach(task => require(task));

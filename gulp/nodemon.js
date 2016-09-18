@@ -3,12 +3,16 @@
 import gulp from 'gulp';
 import nodemon from 'gulp-nodemon';
 import browserSync from 'browser-sync';
-import { BROWSER_SYNC_RELOAD_DELAY, SERVER_JS_SOURCE } from './config';
+import { 
+  BROWSER_SYNC_RELOAD_DELAY, 
+  SERVER_JS_SOURCE, 
+  DESTINATION 
+} from './config';
 
 gulp.task('nodemon', (cb) => {
   var called = false;
   nodemon({
-    script: 'index.js',
+    script: `${DESTINATION}/server.js`,
     watch: [`${SERVER_JS_SOURCE}/**/*.js`]
   })
   .on('start', () => {

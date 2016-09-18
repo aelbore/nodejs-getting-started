@@ -1,18 +1,14 @@
 /// <reference path="../typings/index.d.ts" />
 
-import { app } from './app';
+import express from 'express';
 import * as http from 'http';
 
-require('http-shutdown').extend();
+import { app } from './app';
 
-let server = http.createServer(app).withShutdown();
+let server = http.createServer(app);
 
 server.listen(3000, 'localhost');
-server.on('listening', () => {
-  const {address, port} = server.address();
-  console.log(`Express server started on port ${port} at ${address}.`);
-});
-
-server.shutdown(() => {
-  process.exit(0);
+server.on('listening', function() {
+  let { port, address } = server.address();
+  console.log(`Express server started on port ${port} at ${address}`);
 });

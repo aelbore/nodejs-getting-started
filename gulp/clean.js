@@ -5,8 +5,5 @@ import { cleanFiles } from './utils';
 import { DESTINATION } from './config';
 
 gulp.task('clean', () => {
-  return cleanFiles([
-      `${DESTINATION}/**/*.js`, 
-      `${DESTINATION}/**/*.map`
-  ]);
+  return cleanFiles(`${DESTINATION}/*`);
 });

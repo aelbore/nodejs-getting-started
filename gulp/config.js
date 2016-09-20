@@ -4,7 +4,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const SERVER_JS_SOURCE = 'src';
+const SRC_JS = 'src';
+const SERVER_JS_SOURCE = `${SRC_JS}/server`;
 const DESTINATION = 'dist';
 const BROWSER_SYNC_RELOAD_DELAY = 500;
 const PROXY = {
@@ -19,5 +20,6 @@ export {
   DESTINATION,
   BROWSER_SYNC_RELOAD_DELAY,
   BABEL_RC,
-  PROXY
+  PROXY,
+  SRC_JS
 }

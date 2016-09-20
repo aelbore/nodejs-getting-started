@@ -4,5 +4,5 @@ import gulp from 'gulp';
 import gulpSequence from 'gulp-sequence';
 
 gulp.task('default', 
-  gulpSequence('serve', ['watch-html', 'watch-server-js'])
+  gulpSequence('serve', ['watch-html', 'watch-server'])
 );

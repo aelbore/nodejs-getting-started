@@ -4,6 +4,7 @@
     "gulp": "registry:npm/gulp#4.0.0-alpha.2+20160817105618"
   },
   "globalDependencies": {
+    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
     "browser-sync": "registry:dt/browser-sync#0.0.0+20160524142403",
     "express": "registry:dt/express#4.0.0+20160708185218",
     "express-serve-static-core": "registry:dt/express-serve-static-core#4.0.0+20160829034835",

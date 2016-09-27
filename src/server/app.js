@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-app.use(express.static('public'));
+app.use(express.static('dist/client'));
+app.use(express.static('node_modules'));
 
 export { app }

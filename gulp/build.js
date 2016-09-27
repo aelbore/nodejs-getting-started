@@ -8,5 +8,5 @@ import * as glob from 'glob';
 const FILES = glob.sync(`${SRC_JS}/**/*.js`);
 
 gulp.task('build', () => {
-  return build(FILES, SRC_JS, DESTINATION);
+  return build(FILES, SRC_JS);
 });

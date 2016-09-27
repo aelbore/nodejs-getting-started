@@ -4,6 +4,8 @@ import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import babel from 'gulp-babel';
 import clean from 'gulp-clean';
+import nodemon from 'gulp-nodemon';
+import browserSync from 'browser-sync';
 
 import * as glob from 'glob';
 import * as path from 'path';
@@ -29,7 +31,7 @@ copyFiles = (files, dest) => {
 nodemonDebug = (jsSource, dest, isDebug = true, callback) => {
   var called = false;
   let options = {
-    script: `${jsSource}/server/server.js`,
+    script: `${dest}/server/server.js`,
     watch: [`${dest}/**/*`]   
   };
   if (isDebug){ 

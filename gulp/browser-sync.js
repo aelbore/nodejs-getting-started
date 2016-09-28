@@ -5,7 +5,7 @@ import browserSync from 'browser-sync';
 import { PROXY } from './config';
 
 gulp.task('browser-sync', ['nodemon'], (done) => {
-  browserSync({
+  browserSync.init({
     startPath: '/',
     proxy: PROXY.URL,
     port: PROXY.PORT,

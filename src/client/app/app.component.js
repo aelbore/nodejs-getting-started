@@ -1,9 +1,8 @@
-/// <reference path="../../../typings/index.d.ts" />
+let AppComponent = () => {
+	return {
+		template: `<h1> Hello World </h1>`,
+		restrict: 'E'
+	};
+};
 
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'my-app',
-  template: '<h1>My First Angular 2 App</h1>'
-})
-export class AppComponent { }
+export default AppComponent;

@@ -5,7 +5,7 @@ import { build } from './utils';
 import { SRC_JS, DESTINATION } from './config';
 import * as glob from 'glob';
 
-const FILES = glob.sync(`${SRC_JS}/**/*.js`);
+const FILES = glob.sync(`${SRC_JS}/server/**/*.js`);
 
 gulp.task('build', () => {
   return build(FILES, SRC_JS);

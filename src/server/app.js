@@ -10,6 +10,5 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('dist/client'));
-app.use(express.static('node_modules'));
 
 export { app }

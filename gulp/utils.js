@@ -7,6 +7,8 @@ import clean from 'gulp-clean';
 import nodemon from 'gulp-nodemon';
 import browserSync from 'browser-sync';
 import filter from 'gulp-filter';
+import gulpIf from 'gulp-if';
+import htmlmin from 'gulp-htmlmin';
 
 import * as glob from 'glob';
 import * as path from 'path';
@@ -18,11 +20,17 @@ import {
   DESTINATION 
 } from './config';
 
+let condition = (file) => {
+  console.log(file);
+  return false;
+};
+
 let build = (files, source = null, dest = DESTINATION) => {
   let sourceFiles = (source ? 
-      [`${source}/**/*`, `!${CLIENT_JS_SOURCE}/jspm_packages/**/*`] : files);
+      [ `${source}/**/*`, `!${CLIENT_JS_SOURCE}/jspm_packages/**/*` ] : files);
   return gulp.src(sourceFiles)
-    .pipe(babel({ babelrc: true, only: files, sourceMaps: 'both' }))
+    .pipe(babel({ babelrc: true, only: files, sourceMaps: 'both', minified: true }))
+    .pipe(gulpIf('*.html', htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest(dest));  
 },
 cleanFiles = (files) => {

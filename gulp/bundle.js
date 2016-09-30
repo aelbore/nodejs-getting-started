@@ -6,6 +6,7 @@ import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
 import htmlreplace from 'gulp-html-replace';
+import htmlmin from 'gulp-htmlmin';
 
 import * as path from 'path';
 
@@ -36,6 +37,7 @@ gulp.task('bundle', () => {
             .pipe(htmlreplace({
                 'js': ['system.js', 'app.min.js']
             }))
+            .pipe(htmlmin({collapseWhitespace: true}))
             .pipe(gulp.dest(buildRoot));
       })
       .then(() => {

@@ -1,17 +1,16 @@
 /// <reference path="../typings/index.d.ts" />
 
 import gulp from 'gulp';
-import * as path from 'path';
-import { DESTINATION } from './config';
+import { DESTINATION, CLIENT_JS_SOURCE } from './config';
 
-let files = [
-  path.join(__dirname, '../node_modules/core-js/shim.js'),
-  path.join(__dirname, '../node_modules/zone.js/dist/zone.js'),
-  path.join(__dirname, '../node_modules/reflect-metadata/Reflect.js'),
-  path.join(__dirname, '../node_modules/systemjs/dist/system.src.js'),
-  path.join(__dirname, '../node_modules/core-js/shim.js'), 
-];
-
-gulp.task('copy-libs', () => {
-  return gulp.src(files).pipe(gulp.dest(`${DESTINATION}/client/libs`));
+gulp.task('copy-systemjs:bundle', () => {
+  return gulp.src(`${CLIENT_JS_SOURCE}/jspm_packages/system.js`)
+    .pipe(gulp.dest('build'));
 });
+
+gulp.task('copy-jspm', () => {
+  return gulp.src(`${CLIENT_JS_SOURCE}/jspm_packages/**/*`)
+    .pipe(gulp.dest(`${DESTINATION}/client/jspm_packages`));
+});
+
+gulp.task('copy', ['copy-jspm']);

@@ -6,6 +6,7 @@ import * as path from 'path';
 
 const SRC_JS = 'src';
 const SERVER_JS_SOURCE = `${SRC_JS}/server`;
+const CLIENT_JS_SOURCE = `${SRC_JS}/client`;
 const DESTINATION = 'dist';
 const BROWSER_SYNC_RELOAD_DELAY = 500;
 const PROXY = {
@@ -17,6 +18,7 @@ const BABEL_RC = JSON.parse(fs.readFileSync(path.join(__dirname, '../.babelrc'),
 
 export {
   SERVER_JS_SOURCE,
+  CLIENT_JS_SOURCE,
   DESTINATION,
   BROWSER_SYNC_RELOAD_DELAY,
   BABEL_RC,

@@ -7,8 +7,7 @@ let tasks = glob.sync('./gulp/**/*.js', {
   dot: true, 
   ignore: [ 
     path.join(__dirname, './gulp/utils.js'), 
-    path.join(__dirname, './gulp/config.js'),
-    path.join(__dirname, './gulp/bundle.js')
+    path.join(__dirname, './gulp/config.js')
   ] 
 });
 tasks.forEach(task => require(task));

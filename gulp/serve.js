@@ -3,4 +3,6 @@
 import gulp from 'gulp';
 import gulpSequence from 'gulp-sequence';
 
-gulp.task('serve', gulpSequence('clean', 'build', 'browser-sync'));
+gulp.task('serve', 
+  gulpSequence('clean', 'build', 'remove-jspm', 'browser-sync')
+);

@@ -6,6 +6,7 @@ import babel from 'gulp-babel';
 import clean from 'gulp-clean';
 import nodemon from 'gulp-nodemon';
 import browserSync from 'browser-sync';
+import filter from 'gulp-filter';
 
 import * as glob from 'glob';
 import * as path from 'path';
@@ -13,11 +14,14 @@ import * as path from 'path';
 import { 
   BROWSER_SYNC_RELOAD_DELAY, 
   SERVER_JS_SOURCE, 
+  CLIENT_JS_SOURCE,
   DESTINATION 
 } from './config';
 
 let build = (files, source = null, dest = DESTINATION) => {
-  return gulp.src((source ? `${source}/**/*` : files))
+  let sourceFiles = (source ? 
+      [`${source}/**/*`, `!${CLIENT_JS_SOURCE}/jspm_packages/**/*`] : files);
+  return gulp.src(sourceFiles)
     .pipe(babel({ babelrc: true, only: files, sourceMaps: 'both' }))
     .pipe(gulp.dest(dest));  
 },
@@ -32,7 +36,7 @@ nodemonDebug = (jsSource, dest, isDebug = true, callback) => {
   var called = false;
   let options = {
     script: `${dest}/server/server.js`,
-    watch: [`${dest}/**/*`]   
+    watch: [`${jsSource}/**/*.js`]   
   };
   if (isDebug){ 
     options.exec = 'node-inspector & node --debug' 
@@ -50,6 +54,7 @@ nodemonDebug = (jsSource, dest, isDebug = true, callback) => {
 watcher = (srcRoot, destRoot) => {
   gulp.watch(`${srcRoot}/**/*`, (event) => {
     console.log(`> ${event.type}: ${event.path}.`);
+    let isClient = (event.path.indexOf('client') >= 0);
     let file = event.path.replace(srcRoot, destRoot);
     if (event.type === 'deleted'){
       cleanFiles(file);
@@ -61,6 +66,7 @@ watcher = (srcRoot, destRoot) => {
         copyFiles(event.path, null, dest);
       }
     }
+    if (isClient){ gulp.start('bs-reload'); }
   });
 };
 

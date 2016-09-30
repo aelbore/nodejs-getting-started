@@ -10,12 +10,13 @@
   <app></app>
 </div>
 
+<!-- build:js -->
 <script src="jspm_packages/system.js"></script>
 <script src="config.js"></script>
 <script>
-  System
-    .import('app/app')
-    .catch(function(err){ console.error(err); });
+  System.import('app/app').catch(console.error.bind(console));
 </script>
+<!-- endbuild-->
+
 </body>
 </html>

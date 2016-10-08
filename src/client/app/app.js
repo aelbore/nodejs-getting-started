@@ -2,10 +2,12 @@
 
 import * as angular from 'angular';
 import AppComponent from './app.component';
+import SocketClient from './socket-io-client';
 
 let AppModule = angular
       .module('App', [])
-      .directive('app', AppComponent);
+      .directive('app', AppComponent)
+      .service('socketClient', SocketClient);
 
 var container = document.getElementById('app-container');
 

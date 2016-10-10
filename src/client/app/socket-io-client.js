@@ -16,7 +16,7 @@ let SocketClient = (function(){
     });
     /// listen to client
     socket.on('socket-client', function(data){
-      args.onListenCallBack(data);
+      args.onListenCallback(data);
     });
   };
 

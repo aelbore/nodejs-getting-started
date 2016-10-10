@@ -1,19 +1,22 @@
 
 const HOST = 'http://localhost:3000';
 
-let AppComponent = () => {
+let AppComponent = function(){
 	return {
 		template: `
       <h1>Hello World</h1>
       <div id="content">
-        <ul ng-repeat="item in vm.items">
-          <li>{{ item.fName }}</li>
+        <ul>
+          <li ng-repeat="item in ctrl.items">
+            {{ item.fName }}
+          </li>
         </ul>  
       </div>
     `,
 		restrict: 'E',
-		controller: function(socketClient){      
-      let vm = this;
+    controllerAs: 'ctrl',
+		controller: function(socketClient){     
+      //this.items = JSON.parse("[{\"fName\":\"Arjay\"}]");
 
       socketClient.onInit({
         host: HOST,
@@ -21,13 +24,12 @@ let AppComponent = () => {
           'SG_GROUP', 
           'user'+ Math.random() 
         ],
-        onListenCallback: function(data){
+        onListenCallback: function(data) {
           console.log(data);
-          vm.items = data;
-        }
+          this.items = data;
+        }.bind(this)
       });
-		},
-    controllerAs: 'vm'
+		}
 	};
 };
 

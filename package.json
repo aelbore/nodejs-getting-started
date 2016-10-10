@@ -19,10 +19,9 @@
   },
   "homepage": "https://github.com/aelbore/nodejs-getting-started#readme",
   "dependencies": {
-    "angular": "^1.5.8",
-    "core-js": "^2.4.1",
     "express": "^4.14.0",
     "redis": "^2.6.2",
+    "socket.io": "^1.5.0",
     "systemjs": "0.19.27"
   },
   "devDependencies": {

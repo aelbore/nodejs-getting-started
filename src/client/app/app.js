@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/index.d.ts" />
 
 import * as angular from 'angular';
-import AppComponent from './app.component';
+import AppComponent from './components/app.component';
 import SocketClient from './socket-io-client';
 
 let AppModule = angular

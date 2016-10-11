@@ -54,6 +54,8 @@
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.8",
       "angular-ui-router": "github:angular-ui/angular-ui-router-bower@^0.3.1",
+      "font-awesome": "npm:font-awesome@^4.6.3",
+      "glob": "npm:glob@^7.1.1",
       "socket.io-client": "github:socketio/socket.io-client@^1.5.0"
     },
     "devDependencies": {

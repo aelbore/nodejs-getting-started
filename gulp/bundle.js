@@ -19,11 +19,13 @@ let resolveTo = (resolvePath) => {
 	}
 };
 
-let buildRoot = path.join(__dirname, '../build/'); 
+let buildRoot = path.join(__dirname, '../build'); 
 let buildPath = `${buildRoot}/app.js`;
 let appPath = resolveTo('app')('app');
 
 gulp.task('bundle', () => {
+ console.log(buildPath);
+
   return jspm.bundleSFX(appPath, buildPath, {})
       .then(() => {
         return gulp.src(buildPath)

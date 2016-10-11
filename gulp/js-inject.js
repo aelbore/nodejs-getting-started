@@ -4,6 +4,7 @@
 import gulp from 'gulp';
 import * as fs from 'fs';
 import * as glob from 'glob';
+import * as path from 'path';
 
 import { Configs } from '../modules/component-config';
 
@@ -17,21 +18,15 @@ gulp.task('component', () => {
   });  
 
   files.forEach((file) => {
-    components.push(component.name);
+    let moduleName = path.basename(file).replace('.component.js', '-module');
+    components.push(`'${moduleName}'`);
   });  
 
-  let ngComponentModule = `
-    import * as angular from 'angular';
-    import Page from './page';
+  let dependencies = components.toString();
 
-    let Component = angular
-      .module('ui-component', [${components.toString()}])
-      .directive('ui-page', Page);
-  `;
-
-   let filePath = path.join(__dirname, './index.component.js');
-   fs.writeFile(filePath, (error) => {
-     console.log('The file was saved!');
-   });
+  let filePath = path.join(__dirname, './index.component.js');
+  fs.writeFile(filePath, ngComponentModule,  (error) => {
+    console.log('The file was saved!');
+  });
 
 });

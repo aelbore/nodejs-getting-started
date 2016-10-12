@@ -1,12 +1,12 @@
 
-
 let Page = () => {
   return {
+    transclude: true,
     template: `
-      <ui-header></ui-header>
+      <ng-transclude></ng-transclude>
     `,
 		restrict: 'E'
-  }
+  } 
 };
 
 export default Page;

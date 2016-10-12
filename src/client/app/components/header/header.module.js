@@ -6,6 +6,6 @@ import Header from './header';
 
 let HeaderModule = angular
       .module('header-module', [])
-      .directive('ui-header', Header);
+      .directive('scbHeader', Header);
 
 export default HeaderModule;

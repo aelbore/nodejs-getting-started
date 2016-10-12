@@ -1,0 +1,17 @@
+scb-header {
+  position: fixed;
+  background: #fff;
+  border-bottom: 1px solid #cfdbe2;
+  width: 100%;
+  margin: -20px -20px 20px;
+  padding: 10px 20px;
+  z-index: 99;
+}
+
+scb-header h3 {
+  font-size: 24px;
+  line-height: 1.1;
+  color: #929292;
+  font-weight: 400;
+  text-transform: capitalize;
+}

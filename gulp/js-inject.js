@@ -2,31 +2,38 @@
 /// <reference path="../typings/index.d.ts" />
 
 import gulp from 'gulp';
+import rimraf from 'rimraf';
+import strToSteam from 'string-to-stream';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
 
 import { Configs } from '../modules/component-config';
+import { toPascalCase } from './utils-string';
 
 gulp.task('component', () => {
+  let components = []; 
+  var imports = null;
+
+  let createImport = (file) => {
+    let filePath = path.basename(file).replace('.js', '');
+    let ModuleObject = toPascalCase(filePath);
+    let paths = path.dirname(file).split('/');
+    let pathLen = paths.length;
+    let parentPath = paths[pathLen - 1];
+    return `import ${ModuleObject} from './${parentPath}/${filePath}';\n`;   
+  };
+
+  Configs.files.forEach((file) => {
+    //let moduleName = path.basename(file).replace('.', '-').replace('.js', '');
+    let filePath = path.basename(file).replace('.js', '');
+    let ModuleObject = toPascalCase(filePath);
+    imports = (imports ? imports : '') + createImport(file);
+    components.push(` ${ModuleObject}.name`);
+  });  
   
-  let components = [];
+  let ngComponentModule = Configs.indexComponent(components.toString(), imports);
+  let writable = fs.createWriteStream(Configs.dest);
 
-  let files = glob.sync(Configs.files, {
-    dot: true, 
-    ignore: Configs.ignore
-  });  
-
-  files.forEach((file) => {
-    let moduleName = path.basename(file).replace('.component.js', '-module');
-    components.push(`'${moduleName}'`);
-  });  
-
-  let dependencies = components.toString();
-
-  let filePath = path.join(__dirname, './index.component.js');
-  fs.writeFile(filePath, ngComponentModule,  (error) => {
-    console.log('The file was saved!');
-  });
-
+  strToSteam(ngComponentModule).pipe(writable);  
 });

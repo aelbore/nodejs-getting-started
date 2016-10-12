@@ -6,7 +6,7 @@ import { CLIENT_JS_SOURCE, SERVER_JS_SOURCE, SRC_JS, DESTINATION } from './confi
 import * as glob from 'glob';
 import * as path from 'path';
 
-gulp.task('build', () => {
+gulp.task('build', ['component'], () => {
   let ignoreFiles = glob.sync(`${CLIENT_JS_SOURCE}/jspm_packages/**/*`);
   ignoreFiles.push(`${CLIENT_JS_SOURCE}/config.js`);
 

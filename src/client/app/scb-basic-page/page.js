@@ -3,7 +3,7 @@ let Page = () => {
   return {
     transclude: true,
     template: `
-      <ng-transclude></ng-transclude>
+      <div ng-transclude></div>
     `,
 		restrict: 'E'
   } 

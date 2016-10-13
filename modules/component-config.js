@@ -18,12 +18,13 @@ let Configs = {
   }),
   indexComponent: (dependencies, imports) => {
     return `import * as angular from 'angular';
-import Page from './page'; 
+import Page from './page';
+import SocketClientModule from './socket-io-client'; 
 ${imports}
 let Module = angular
-  .module('scb-seed-ui-module', [${dependencies} ])
+  .module('scb-seed-ui-module', [ SocketClientModule.name, ${dependencies} ])
   .directive('scbPage', Page);
-
+  
 export default Module;` }
 };
 

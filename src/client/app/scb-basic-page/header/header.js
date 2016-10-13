@@ -6,7 +6,10 @@ let Header = () => {
     scope: {
       title: '@'
     },
-    template: `<h3>{{ title }}</h3><ng-transclude></ng-transclude>`,
+    template: `
+      <h3>{{ title }}</h3>
+      <div ng-transclude></div>
+    `,
 		restrict: 'E'
   }
 };

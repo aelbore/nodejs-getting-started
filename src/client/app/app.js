@@ -7,8 +7,7 @@ import Module from './components/module';
 
 let AppModule = angular
       .module('App', [Module.name])
-      .directive('app', AppComponent)
-      .service('socketClient', SocketClient);
+      .directive('app', AppComponent);      
 
 var container = document.getElementById('app-container');
 

@@ -2,7 +2,6 @@
 /// <reference path="../typings/index.d.ts" />
 
 import gulp from 'gulp';
-import rimraf from 'rimraf';
 import strToSteam from 'string-to-stream';
 import * as fs from 'fs';
 import * as glob from 'glob';
@@ -13,7 +12,7 @@ import { toPascalCase } from './utils-string';
 
 gulp.task('component', () => {
   let components = []; 
-  var imports = null;
+  let imports = null;
 
   let createImport = (file) => {
     let filePath = path.basename(file).replace('.js', '');
@@ -25,7 +24,6 @@ gulp.task('component', () => {
   };
 
   Configs.files.forEach((file) => {
-    //let moduleName = path.basename(file).replace('.', '-').replace('.js', '');
     let filePath = path.basename(file).replace('.js', '');
     let ModuleObject = toPascalCase(filePath);
     imports = (imports ? imports : '') + createImport(file);

@@ -2,8 +2,9 @@ import './footer.css!css';
 
 let Footer = () => {
   return {
+    transclude: true,
     template: `
-      <div>Footer Here.....</div>
+      <div ng-transclude></div>
     `,
 		restrict: 'E'
   }

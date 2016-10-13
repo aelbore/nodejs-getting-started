@@ -1,0 +1,7 @@
+scb-button.visible {
+  visibility: visible;
+}
+
+scb-button.hidden {
+  visibility: hidden;
+}

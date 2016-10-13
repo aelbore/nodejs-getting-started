@@ -1,4 +1,4 @@
-scb-basic-header {
+scb-header {
   position: fixed;
   background: #fff;
   border-bottom: 1px solid #cfdbe2;
@@ -8,7 +8,7 @@ scb-basic-header {
   z-index: 99;
 }
 
-scb-basic-header h3 {
+scb-header h3 {
   font-size: 24px;
   line-height: 1.1;
   color: #929292;

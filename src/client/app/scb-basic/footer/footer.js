@@ -1,6 +1,6 @@
 import './footer.css!css';
 
-let Footer = () => {
+let ScbBasicFooter = () => {
   return {
     transclude: true,
     template: `
@@ -10,4 +10,4 @@ let Footer = () => {
   }
 };
 
-export default Footer;
+export default ScbBasicFooter;

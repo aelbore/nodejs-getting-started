@@ -14,14 +14,18 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.5.8",
-    "angular-annotations": "npm:angular-annotations@1.1.5",
-    "angular-decorators": "npm:angular-decorators@1.2.0",
+    "angular-mocks": "github:angular/bower-angular-mocks@1.5.8",
     "angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
+    "css": "github:systemjs/plugin-css@0.1.31",
+    "ng-metadata": "npm:ng-metadata@2.2.1",
     "reflect-metadata": "npm:reflect-metadata@0.1.8",
     "github:angular-ui/angular-ui-router-bower@0.3.1": {
+      "angular": "github:angular/bower-angular@1.5.8"
+    },
+    "github:angular/bower-angular-mocks@1.5.8": {
       "angular": "github:angular/bower-angular@1.5.8"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -41,9 +45,6 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
-    },
-    "npm:angular-decorators@1.2.0": {
-      "metawriter": "npm:metawriter@1.1.0"
     },
     "npm:assert@1.4.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -71,9 +72,11 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:metawriter@1.1.0": {
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "reflect-metadata": "npm:reflect-metadata@0.1.8"
+    "npm:ng-metadata@2.2.1": {
+      "angular": "npm:angular@1.5.8",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "reflect-metadata": "npm:reflect-metadata@0.1.8",
+      "rxjs": "npm:rxjs@5.0.0-beta.11"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -82,6 +85,11 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
+    },
+    "npm:rxjs@5.0.0-beta.11": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "symbol-observable": "npm:symbol-observable@1.0.4"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",

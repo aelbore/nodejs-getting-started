@@ -1,11 +1,9 @@
-import { Component, View } from 'angular-decorators';
+import { Component } from 'ng-metadata/core';
+import './app.component.css!css';
 
 @Component({
 	selector: 'app',
-  controllerAs: 'vm'
-})
-@View({ 
-	template: `<h1>{{ vm.message }}</h1>` 
+  template: `<h1>{{ $ctrl.message }}</h1>` 
 })
 export class AppComponent {
   constructor(){    

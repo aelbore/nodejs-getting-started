@@ -37,6 +37,7 @@
     "gulp-html-replace": "^1.6.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.1",
+    "gulp-jspm-build": "0.0.15",
     "gulp-ng-annotate": "^2.0.0",
     "gulp-nodemon": "^2.1.0",
     "gulp-rename": "^1.2.2",
@@ -54,8 +55,10 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.8",
-      "angular-decorators": "npm:angular-decorators@^1.2.0",
+      "angular-mocks": "github:angular/bower-angular-mocks@^1.5.8",
       "angular-ui-router": "github:angular-ui/angular-ui-router-bower@^0.3.1",
+      "css": "github:systemjs/plugin-css@^0.1.31",
+      "ng-metadata": "npm:ng-metadata@^2.2.1",
       "reflect-metadata": "npm:reflect-metadata@^0.1.8"
     },
     "devDependencies": {

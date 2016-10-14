@@ -23,24 +23,40 @@ let buildRoot = path.join(__dirname, '../build/');
 let buildPath = `${buildRoot}/app.js`;
 let appPath = resolveTo('app')('app');
 
-gulp.task('bundle', () => {
-  return jspm.bundleSFX(appPath, buildPath, {})
-      .then(() => {
-        return gulp.src(buildPath)
-            .pipe(ngAnnotate())
-            .pipe(uglify())
-            .pipe(rename('app.min.js'))
-            .pipe(gulp.dest(buildRoot));
-      })
-      .then(() => {
-        return gulp.src(`${CLIENT_JS_SOURCE}/index.html`)
-            .pipe(htmlreplace({
-                'js': ['system.js', 'app.min.js']
-            }))
-            .pipe(htmlmin({collapseWhitespace: true}))
-            .pipe(gulp.dest(buildRoot));
-      })
-      .then(() => {
-          gulp.start('copy-systemjs:bundle');
-      });
+
+gulp.task("jspm_bundle", function () {
+  var _jspm = require('gulp-jspm-build');
+  return _jspm({
+      bundleOptions: {
+          minify: true,
+          mangle: false
+      },
+      bundleSfx: true,
+      bundles: [
+          { src: path.join(__dirname, '../src/client/app.js'), dst: 'app.min.js' }
+      ]
+  })
+  .pipe(gulp.dest(buildPath));
 });
+
+// gulp.task('bundle', () => {
+//   return jspm.bundleSFX(appPath, buildPath, {})
+//       .then(() => {
+//         return gulp.src(buildPath)
+//             .pipe(ngAnnotate())
+//             .pipe(uglify())
+//             .pipe(rename('app.min.js'))
+//             .pipe(gulp.dest(buildRoot));
+//       })
+//       .then(() => {
+//         return gulp.src(`${CLIENT_JS_SOURCE}/index.html`)
+//             .pipe(htmlreplace({
+//                 'js': ['system.js', 'app.min.js']
+//             }))
+//             .pipe(htmlmin({collapseWhitespace: true}))
+//             .pipe(gulp.dest(buildRoot));
+//       })
+//       .then(() => {
+//           gulp.start('copy-systemjs:bundle');
+//       });
+// });

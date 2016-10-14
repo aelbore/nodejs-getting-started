@@ -1,6 +1,7 @@
 System.config({
   defaultJSExtensions: true,
   transpiler: "babel",
+  baseURL: './app',
   babelOptions: {
     "optional": [
       "runtime",

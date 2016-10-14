@@ -29,7 +29,7 @@ let build = (files, source = null, dest = DESTINATION) => {
   let sourceFiles = (source ? 
       [ `${source}/**/*`, `!${CLIENT_JS_SOURCE}/jspm_packages/**/*` ] : files);
   return gulp.src(sourceFiles)
-    .pipe(babel({ babelrc: true, only: files, sourceMaps: 'both', minified: true }))
+    .pipe(babel({ babelrc: true, only: files, sourceMaps: 'both', minified: false }))
     .pipe(gulpIf('*.html', htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest(dest));  
 },

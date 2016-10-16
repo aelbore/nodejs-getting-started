@@ -8,6 +8,7 @@ const SRC_JS = 'src';
 const SERVER_JS_SOURCE = `${SRC_JS}/server`;
 const CLIENT_JS_SOURCE = `${SRC_JS}/client`;
 const DESTINATION = 'dist';
+const BUILD_PATH = 'build';
 const BROWSER_SYNC_RELOAD_DELAY = 500;
 const PROXY = {
   URL: 'http://localhost:3000',
@@ -23,5 +24,6 @@ export {
   BROWSER_SYNC_RELOAD_DELAY,
   BABEL_RC,
   PROXY,
-  SRC_JS
+  SRC_JS,
+  BUILD_PATH
 }

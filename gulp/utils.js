@@ -29,7 +29,7 @@ let build = (files, source = null, dest = DESTINATION) => {
   let sourceFiles = (source ? 
       [ `${source}/**/*`, `!${CLIENT_JS_SOURCE}/jspm_packages/**/*` ] : files);
   return gulp.src(sourceFiles)
-    .pipe(babel({ babelrc: true, only: files, sourceMaps: 'both', minified: true }))
+    .pipe(babel({ babelrc: true, only: files, sourceMaps: 'both', minified: false }))
     .pipe(gulpIf('*.html', htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest(dest));  
 },
@@ -71,7 +71,7 @@ watcher = (srcRoot, destRoot) => {
       if (path.extname(event.path) === '.js'){
         build(glob.sync(event.path), null, dest);
       } else {
-        copyFiles(event.path, null, dest);
+        copyFiles(event.path, dest);
       }
     }
     if (isClient){ gulp.start('bs-reload'); }

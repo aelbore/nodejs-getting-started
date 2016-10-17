@@ -4,7 +4,6 @@ import gulp from 'gulp';
 import jspm from 'jspm';
 import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
-import uglify from 'gulp-uglify';
 import htmlreplace from 'gulp-html-replace';
 import htmlmin from 'gulp-htmlmin';
 import sourcemaps from 'gulp-sourcemaps';
@@ -13,18 +12,11 @@ import gulpSequence from 'gulp-sequence';
 
 import * as path from 'path';
 
-import { CLIENT_JS_SOURCE, DESTINATION } from './config';
+import { CLIENT_JS_SOURCE, BUILD_PATH } from './config';
 
-let resolveTo = (resolvePath) => {
-	return (glob) => {
-		glob = glob || '';
-		return path.resolve(path.join(CLIENT_JS_SOURCE, resolvePath, glob));
-	}
-};
-
-let buildRoot = path.join(__dirname, '../build/'); 
+let buildRoot = path.join(__dirname, `../${BUILD_PATH}/`); 
 let buildPath = `${buildRoot}/app.js`;
-let appPath = path.join(__dirname, '../src/client/app/app.js');
+let appPath = path.join(__dirname, `../${CLIENT_JS_SOURCE}/app/app.js`);
 
 gulp.task('jspm-bundle', () => {
   let jspm_options = {
@@ -33,18 +25,18 @@ gulp.task('jspm-bundle', () => {
       sourceMaps: true
   };
   return gulp.src(appPath)
-      .pipe(sourcemaps.init())        
+      .pipe(sourcemaps.init())
       .pipe(gulp_jspm(jspm_options))
+      .pipe(ngAnnotate())    
       .pipe(rename('app.min.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(buildRoot));
 });
 
 gulp.task('jspm-bundle-index', () => {
+  let htmlReplace = htmlreplace({ 'js': ['app.min.js'] });
   return gulp.src(`${CLIENT_JS_SOURCE}/index.html`)
-      .pipe(htmlreplace({
-          'js': ['system.js', 'app.min.js']
-      }))
+      .pipe(htmlReplace)
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(gulp.dest(buildRoot));
 });
@@ -52,6 +44,5 @@ gulp.task('jspm-bundle-index', () => {
 gulp.task('bundle', 
     gulpSequence('clean:build', 
         'jspm-bundle', 
-        'jspm-bundle-index', 
-        'copy-systemjs:bundle')
+        'jspm-bundle-index')
 );

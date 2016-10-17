@@ -1,8 +1,11 @@
-let AppComponent = () => {
-	return {
-		template: `<h1> Hello World111121212</h1>`,
-		restrict: 'E'
-	};
-};
+import { Component, Input } from 'ng-metadata/core';
 
-export default AppComponent;
+@Component({
+	selector: 'app',
+	template: `<h1>{{ $ctrl.message }}</h1>`
+})
+export class AppComponent {
+	@Input() message = null;
+	constructor(){
+	}
+}

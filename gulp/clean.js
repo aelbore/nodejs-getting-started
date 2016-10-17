@@ -5,8 +5,8 @@ import rimraf from 'rimraf';
 import { cleanFiles } from './utils';
 import { DESTINATION, BUILD_PATH } from './config';
 
-gulp.task('clean', () => {
-  return cleanFiles(`${DESTINATION}/*`);
+gulp.task('clean', (cb) => {
+  rimraf(`${DESTINATION}`, cb);
 });
 
 gulp.task('remove-jspm', (cb) => {

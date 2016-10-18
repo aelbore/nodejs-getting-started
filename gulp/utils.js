@@ -61,20 +61,24 @@ nodemonDebug = (jsSource, dest, isDebug = true, callback) => {
 },
 watcher = (srcRoot, destRoot) => {
   gulp.watch(`${srcRoot}/**/*`, (event) => {
-    console.log(`> ${event.type}: ${event.path}.`);
-    let isClient = (event.path.indexOf('client') >= 0);
-    let file = event.path.replace(srcRoot, destRoot);
-    if (event.type === 'deleted'){
-      cleanFiles(file);
-    } else {
-      let dest = path.dirname(file);
-      if (path.extname(event.path) === '.js'){
-        build(glob.sync(event.path), null, dest);
+    try {
+      console.log(`> ${event.type}: ${event.path}.`);
+      let isClient = (event.path.indexOf('client') >= 0);
+      let file = event.path.replace(srcRoot, destRoot);
+      if (event.type === 'deleted'){
+        cleanFiles(file);
       } else {
-        copyFiles(event.path, dest);
+        let dest = path.dirname(file);
+        if (path.extname(event.path) === '.js'){
+          build(glob.sync(event.path), null, dest);
+        } else {
+          copyFiles(event.path, dest);
+        }
       }
+      if (isClient){ gulp.start('bs-reload'); }
+    } catch(ex) {
+      console.log(ex);
     }
-    if (isClient){ gulp.start('bs-reload'); }
   });
 };
 

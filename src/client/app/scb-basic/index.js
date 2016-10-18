@@ -1,12 +1,15 @@
-/// <reference path="../../../typings/index.d.ts" />
+/// <reference path="../../../../typings/index.d.ts" />
 
 import 'reflect-metadata';
-import * as angular from 'angular';
+import 'angular';
 
 import ScbBasicHeaderModule from './header/header.module';
 import ScbBasicPageModule from './page/page.module';
+import ScbBasicBodyModule from './body/body.module';
 
-let ScbBasicModule = angular
-      .module('scb.basic.module', [ ScbBasicPageModule.name, ScbBasicHeaderModule.name ])
+const ScbBasicModule = 'scb.basic.module';
+
+angular
+  .module(ScbBasicModule, [ ScbBasicPageModule, ScbBasicHeaderModule, ScbBasicBodyModule ]);
 
 export default ScbBasicModule;

@@ -1,17 +1,25 @@
 /// <reference path="../../../typings/index.d.ts" />
 
 import 'reflect-metadata';
-import * as angular from 'angular';
+import 'angular';
 
-import '../../../build/scb.basic.min';
+import { provide } from 'ng-metadata/core';
+import { AppOtherComponent } from './demo/app.other.component';
+import { AppComponent } from './demo/app.component';
+import { AppService } from './demo/app.service';
 
-let AppModule = angular
-      .module('App', [ 'scb.basic.module' ]);
+let AppModule = 'App';
+
+angular
+  .module(AppModule, [])
+  .directive(...provide(AppComponent))
+  .directive(...provide(AppOtherComponent))
+  .service(...provide(AppService));
 
 var container = document.getElementById('app-container');
 
 angular.element(document).ready(function() {
-  angular.bootstrap(container, [AppModule.name]);
+  angular.bootstrap(container, [ AppModule ]);
 });
 
 export default AppModule;

@@ -12,6 +12,10 @@ import './header.css!css';
 })
 export class ScbBasicHeader {
 	@Input() title = null;
+
 	constructor(){
 	}
+
+  onInit(){
+  }
 }

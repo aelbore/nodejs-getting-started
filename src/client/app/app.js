@@ -8,10 +8,12 @@ import { AppOtherComponent } from './demo/app.other.component';
 import { AppComponent } from './demo/app.component';
 import { AppService } from './demo/app.service';
 
+import ScbBasicModule from './scb-basic/index';
+
 let AppModule = 'App';
 
 angular
-  .module(AppModule, [])
+  .module(AppModule, [ ScbBasicModule ])
   .directive(...provide(AppComponent))
   .directive(...provide(AppOtherComponent))
   .service(...provide(AppService));

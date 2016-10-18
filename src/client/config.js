@@ -19,6 +19,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   map: {
     "angular": "github:angular/bower-angular@1.4.0",
     "babel": "npm:babel-core@5.8.38",

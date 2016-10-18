@@ -2,12 +2,11 @@
 
 import 'reflect-metadata';
 import * as angular from 'angular';
-import { provide } from 'ng-metadata/core';
-import { AppComponent } from './app.component';
+
+import '../../../build/scb.basic.min';
 
 let AppModule = angular
-      .module('App', [])
-      .directive(...provide(AppComponent));
+      .module('App', [ 'scb.basic.module' ]);
 
 var container = document.getElementById('app-container');
 

@@ -55,7 +55,7 @@
       "baseURL": "src/client"
     },
     "dependencies": {
-      "angular": "github:angular/bower-angular@^1.5.8",
+      "angular": "github:angular/bower-angular@1.4.0",
       "css": "github:systemjs/plugin-css@^0.1.31",
       "ng-metadata": "npm:ng-metadata@^2.2.1",
       "reflect-metadata": "npm:reflect-metadata@^0.1.8",
